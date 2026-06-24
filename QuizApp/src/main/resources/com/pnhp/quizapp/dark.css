@@ -29,3 +29,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     -fx-pref-width: 250;
 }
 
+.ComboBox{
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+    -fx-padding: 8;
+    -fx-pref-width: 250; 
+}

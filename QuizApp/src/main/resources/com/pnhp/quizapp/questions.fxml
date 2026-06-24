@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="Container" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pnhp.quizapp.QuestionsController">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý câu hỏi" wrappingWidth="177.13671875">
+         <styleClass>
+            <String fx:value="Button" />
+            <String fx:value="Subject" />
+         </styleClass>
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <TextArea prefHeight="152.0" prefWidth="600.0" />
+      <ComboBox prefWidth="150.0" styleClass="ComboBox" />
+      <TableView prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+   </children>
+</VBox>

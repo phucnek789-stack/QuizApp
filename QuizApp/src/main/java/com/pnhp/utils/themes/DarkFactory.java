@@ -4,10 +4,17 @@
  */
 package com.pnhp.utils.themes;
 
+import com.pnhp.quizapp.App;
+
 /**
  *
  * @author admin
  */
-public enum ThemesType {
-    DEFAULT, DARK, LIGHT;
+public class DarkFactory extends ThemesAbstractFactory {
+
+    @Override
+    public String getStyleSheet() {
+        return App.class.getResource("dark.css").toExternalForm();
+    }
+    
 }

@@ -1,8 +1,8 @@
 package com.pnhp.quizapp;
 
 import com.pnhp.utils.MyAlertSingleTon;
-import com.pnhp.utils.themes.ThemesType;
-import static com.pnhp.utils.themes.ThemesType.DARK;
+import com.pnhp.utils.MyStageSingleton;
+import com.pnhp.utils.themes.ThemeTypes;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -12,15 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 
 public class PrimaryController implements Initializable{
-    @FXML private ComboBox<ThemesType> cbThemes;
+    @FXML private ComboBox<ThemeTypes> cbThemes;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.cbThemes.setItems(FXCollections.observableArrayList(ThemesType.values()));
+        this.cbThemes.setItems(FXCollections.observableArrayList(ThemeTypes.values()));
     }
     
     public void ManageQuestion(ActionEvent e){
-        MyAlertSingleTon.getInstance().showMessage("[ManageQuestion] Coming soon... ");
+        MyStageSingleton.getInstance().showStage("questions");
     }
     
     public void Practice(ActionEvent e){
@@ -32,19 +32,6 @@ public class PrimaryController implements Initializable{
     }
 
     public void changeTheme(ActionEvent e){
-        switch (this.cbThemes.getSelectionModel().getSelectedItem()) {
-            case DARK:
-                this.cbThemes.getScene().getRoot().getStylesheets().clear();
-                this.cbThemes.getScene().getRoot().getStylesheets().add(App.class.getResource("dark.css").toExternalForm());
-                break;
-            case LIGHT:
-                this.cbThemes.getScene().getRoot().getStylesheets().clear();
-                this.cbThemes.getScene().getRoot().getStylesheets().add(App.class.getResource("light.css").toExternalForm());
-                break;
-            default:
-                this.cbThemes.getScene().getRoot().getStylesheets().clear();
-                this.cbThemes.getScene().getRoot().getStylesheets().add(App.class.getResource("styles.css").toExternalForm());
-                throw new AssertionError();
-        }
+        this.cbThemes.getSelectionModel().getSelectedItem().updateTheme(this.cbThemes.getScene());
     }
 }
