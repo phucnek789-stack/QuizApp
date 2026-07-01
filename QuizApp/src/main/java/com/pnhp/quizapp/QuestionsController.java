@@ -4,14 +4,17 @@
  */
 package com.pnhp.quizapp;
 
+import com.pnhp.pojo.Category;
+import com.pnhp.services.CategoryServices;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -19,37 +22,19 @@ import javafx.fxml.Initializable;
  * @author admin
  */
 public class QuestionsController implements Initializable {
-
+    @FXML private ComboBox<Category> cbCates;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        CategoryServices s= new CategoryServices();
         try {
-            //B1 -> Nap driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            //B2 -> Mo ket noi
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhouse/quizdb", "root", "root");
-            
-            //B3 -> Thuc thi truy van
-            String sql = "SELECT * FROM Category";
-            Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
-            
-            while(rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                
-                System.out.printf("%d - %s\n", id, name);
-            }
-            
-            //B4 -> Dong ket noi
-            conn.close();
-            
-        } catch (ClassNotFoundException | SQLException ex) {
-            ex.printStackTrace();
+            this.cbCates.setItems(FXCollections.observableList(s.getCates()));
+        } catch (SQLException ex) {
+            Logger.getLogger(QuestionsController.class.getName()).log(Level.SEVERE, null, ex);
         }
+            
     }    
     
 }

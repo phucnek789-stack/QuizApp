@@ -21,7 +21,7 @@
          </font>
       </Text>
       <TextArea prefHeight="152.0" prefWidth="600.0" />
-      <ComboBox prefWidth="150.0" styleClass="ComboBox" />
+      <ComboBox fx:id="cbCates" prefWidth="150.0" styleClass="ComboBox" />
       <TableView prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
